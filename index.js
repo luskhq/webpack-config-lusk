@@ -21,7 +21,8 @@ const luskConfig = (options = {}) => {
     publicPath: "/js/",
   };
 
-  const devtool = !minify ? "cheap-source-map" : null;
+  // See https://webpack.js.org/configuration/devtool/ for more on devtools.
+  const devtool = "cheap-source-map";
 
   const resolve = {
     modules: [path.resolve(sourceDir), "node_modules"],
