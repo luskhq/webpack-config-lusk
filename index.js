@@ -4,6 +4,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const autoprefixerPlugin = require("autoprefixer");
 const DefinePlugin = webpack.DefinePlugin;
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const ModuleConcatenationPlugin = webpack.optimize.ModuleConcatenationPlugin;
 
 const luskConfig = (options = {}) => {
   const {
@@ -58,6 +59,7 @@ const luskConfig = (options = {}) => {
   );
 
   if (minify) {
+    plugins.push(new ModuleConcatenationPlugin());
     plugins.push(new UglifyJsPlugin());
     plugins.push(
       new CompressionPlugin({
