@@ -8,6 +8,9 @@
   },
   "author": "",
   "license": "ISC",
+  "peerDependencies": {
+    "webpack": "^3.5.3"
+  },
   "dependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.25.0",
