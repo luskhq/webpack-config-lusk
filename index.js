@@ -36,7 +36,7 @@ const luskConfig = (options = {}) => {
 
   const scripts = {
     test: /\.js$/,
-    use: [{ loader: "babel-loader" }],
+    use: [{ loader: require.resolve("babel-loader") }],
     include: path.resolve(sourceDir),
   };
 
@@ -47,10 +47,13 @@ const luskConfig = (options = {}) => {
   const styles = {
     test: /\.less$/,
     use: [
-      { loader: "style-loader" },
-      { loader: "css-loader" },
-      { loader: "postcss-loader", options: { plugins: [autoprefixer] } },
-      { loader: "less-loader" },
+      { loader: require.resolve("style-loader") },
+      { loader: require.resolve("css-loader") },
+      {
+        loader: require.resolve("postcss-loader"),
+        options: { plugins: [autoprefixer] },
+      },
+      { loader: require.resolve("less-loader") },
     ],
   };
 
