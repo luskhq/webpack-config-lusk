@@ -22,6 +22,10 @@ const luskConfig = (options = {}) => {
     publicPath: "/js/",
   };
 
+  // This will force webpack to give up trying to create a bundle if it runs
+  // into errors. More info http://bit.ly/2vw5Gas
+  const bail = true;
+
   // See https://webpack.js.org/configuration/devtool/ for more on devtools.
   const devtool = "cheap-source-map";
 
@@ -71,6 +75,7 @@ const luskConfig = (options = {}) => {
   }
 
   return {
+    bail,
     entry,
     output,
     devtool,
