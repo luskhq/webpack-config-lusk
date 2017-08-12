@@ -3,10 +3,14 @@
   "version": "0.1.2",
   "description": "Webpack configs used at Lusk",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luskhq/webpack-config-lusk.git"
   },
-  "author": "",
+  "bugs": {
+    "url": "https://github.com/luskhq/webpack-config-lusk/issues"
+  },
+  "homepage": "https://github.com/luskhq/webpack-config-lusk#readme",
   "license": "ISC",
   "peerDependencies": {
     "webpack": "^3.5.3"
@@ -21,6 +25,6 @@
     "less-loader": "^4.0.5",
     "postcss-loader": "^2.0.6",
     "style-loader": "^0.18.2",
-    "webpack": "^3.5.3"
+    "webpack": "^3.5.4"
   }
 }
