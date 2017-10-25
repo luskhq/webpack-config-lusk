@@ -13,18 +13,19 @@
   "homepage": "https://github.com/luskhq/webpack-config-lusk#readme",
   "license": "ISC",
   "peerDependencies": {
-    "webpack": "^3.5.3"
+    "webpack": "^3.8.1"
   },
   "dependencies": {
-    "autoprefixer": "^7.1.2",
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
-    "compression-webpack-plugin": "^1.0.0",
-    "css-loader": "^0.28.4",
-    "less": "^2.7.2",
+    "autoprefixer": "^7.1.6",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "caporal": "^0.7.0",
+    "compression-webpack-plugin": "^1.0.1",
+    "css-loader": "^0.28.7",
+    "less": "^2.7.3",
     "less-loader": "^4.0.5",
-    "postcss-loader": "^2.0.6",
+    "postcss-loader": "^2.0.8",
     "style-loader": "^0.18.2",
-    "webpack": "^3.5.4"
+    "webpack": "^3.8.1"
   }
 }
