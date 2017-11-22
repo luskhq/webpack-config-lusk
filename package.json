@@ -1,6 +1,6 @@
 {
   "name": "webpack-config-lusk",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Webpack configs used at Lusk",
   "main": "index.js",
   "repository": {
