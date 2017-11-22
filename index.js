@@ -18,6 +18,7 @@ const luskConfig = (options = {}) => {
 
   const output = {
     filename: "app.js",
+    chunkFilename: "[id].[name].app.js",
     path: path.resolve(`${outDir}/js`),
     publicPath: "/js/",
   };
