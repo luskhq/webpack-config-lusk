@@ -61,7 +61,9 @@ const luskConfig = (options = {}) => {
 
   plugins.push(
     new DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify(minify ? "production" : "development"),
+      "process.env.NODE_ENV": JSON.stringify(
+        minify ? "production" : "development",
+      ),
     }),
   );
 
