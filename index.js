@@ -5,20 +5,25 @@ const autoprefixerPlugin = require("autoprefixer");
 const DefinePlugin = webpack.DefinePlugin;
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const ModuleConcatenationPlugin = webpack.optimize.ModuleConcatenationPlugin;
+const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 const luskConfig = (options = {}) => {
   const {
     sourceDir = "client",
     outDir = "static",
     extraEntries = [],
+    vendorEntries = [],
     minify = false,
   } = options;
 
-  const entry = [`./${sourceDir}/index.js`, ...extraEntries];
+  const entry = {
+    app: [`./${sourceDir}/index.js`, ...extraEntries],
+    vendor: vendorEntries,
+  };
 
   const output = {
-    filename: "app.js",
-    chunkFilename: "[id].[name].app.js",
+    filename: "[name].js",
+    chunkFilename: "[id]-[name].js",
     path: path.resolve(`${outDir}/js`),
     publicPath: "/js/",
   };
@@ -65,6 +70,32 @@ const luskConfig = (options = {}) => {
       "process.env.NODE_ENV": JSON.stringify(
         minify ? "production" : "development",
       ),
+    }),
+  );
+
+  // Creates a `vendor` chunk that should be included as a script tag inside the
+  // index.html wrapper. This is configured through the `vendorEntries` option,
+  // and should include stuff like React, ReactDOM, Fela, Ramda, etc...
+  //
+  // Making it a separate chunk is useful because the browser can parallelize
+  // their download, and it opens the doors for long-term caching.
+  plugins.push(
+    new CommonsChunkPlugin({
+      name: "vendor",
+      minChunks: Infinity, // Makes sure that only modules specifid in `vendorEntries` are used.
+    }),
+  );
+
+  // Creates a `shared` chunk that will be served along with the first dynamic
+  // import.
+  //
+  // Making it a separate chunk means that common code doesn't have to be
+  // included in every dynamically code-split bundle, which saves significant
+  // amount of bandwidth if multiple bundles are requested in one session.
+  plugins.push(
+    new CommonsChunkPlugin({
+      async: "shared",
+      children: true,
     }),
   );
 
